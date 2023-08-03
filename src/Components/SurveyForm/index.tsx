@@ -72,7 +72,7 @@ export default SurveyForm
 
 const RenderCountdown = (props: CountdownRendererProps) => {
   return (
-    <CustomCountdown $isRunningOut={!props.completed && props.seconds !== 0 && props.seconds < 10}>
+    <CustomCountdown $isRunningOut={!props.completed && props.seconds !== 0 && props.minutes === 0 && props.seconds < 10}>
       {props.completed && <div className="completed">{"Time's up!"}</div>}
       {!props.completed && <div className="running">{`${zeroPad(props.minutes, 2)}: ${zeroPad(props.seconds, 2)}`}</div>}
     </CustomCountdown>
