@@ -13,17 +13,25 @@ export const ContainerStyled = styled.div`
   padding: 10px;
 `
 
-export const Owner = styled.div`
+export const Mark = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
   position: fixed;
   bottom: 10px;
   left: 10px;
-  font-size: 10px;
-  font-weight: 500;
-  margin: 0;
-  padding: 2px 5px;
-  background-color: #2954998d;
-  color: #ffffff;
-  @media screen and (min-width: 630px){
-    font-size: 11px;
+  > div {
+    padding: 4px 5px;
+    background-color: #2954998d;
+    box-sizing: border-box;
+    > p {
+      font-size: 10px;
+      font-weight: 500;
+      margin: 0;
+      color: #ffffff;
+      @media screen and (min-width: 630px){
+        font-size: 12px;
+      }
+    }
   }
 `
