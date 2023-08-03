@@ -24,8 +24,8 @@ const Review = () => {
           <p className="title">Review your previous survey</p>
         </div>
         <div className="survey-date">
-          <p>Start Date : <span>{moment(survey?.startDate!).format("DD MMMM YYYY | HH:ss")}</span></p>
-          <p>End Date : <span>{moment(survey?.endDate!).format("DD MMMM YYYY | HH:ss")}</span></p>
+          <p>Start Date : <span>{moment(survey?.startDate!).format("DD MMMM YYYY | HH:mm:ss")}</span></p>
+          <p>End Date : <span>{moment(survey?.endDate!).format("DD MMMM YYYY | HH:mm:ss")}</span></p>
         </div>
         <div className="answers-wrapper">
           <div className="scroll">
