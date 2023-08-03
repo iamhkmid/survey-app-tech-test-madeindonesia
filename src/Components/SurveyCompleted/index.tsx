@@ -6,14 +6,16 @@ import { TSurveyContext } from "../../Contexts/SurveyProvider.types"
 import { motion } from "framer-motion"
 
 const SurveyCompleted = () => {
-  const { dispatch } = React.useContext(SurveyContext) as TSurveyContext
+  const { survey, dispatch } = React.useContext(SurveyContext) as TSurveyContext
+
+  const isCompleted = React.useMemo(() => !!survey?.answers?.every((val) => !!val.answerId), [survey?.answers])
 
   return (
     <SurveyCompletedStyled layoutId="page-state">
       <div className="content">
-        <p className="title">Survey Completed! Thank You!</p>
+        <p className="title">{`${isCompleted ? "Survey Completed!" : "Your time is up!"} Thank You!`}</p>
         <p className="sub-title">
-          Congratulations on completing the survey! Your valuable feedback will help us improve our services and provide you with a better shopping experience. Happy shopping!
+          {`${isCompleted ? "Congratulations on completing the survey!" : "Thanks for filling out the survey!"} Your valuable feedback will help us improve our services and provide you with a better shopping experience. Happy shopping!`}
         </p>
         <div className="button-wrapper">
           <motion.div whileHover={{ scale: 1.1 }} className="button">

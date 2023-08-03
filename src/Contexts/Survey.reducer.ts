@@ -13,10 +13,10 @@ export const reducer: TNavReducer = (state, action) => {
         answers: questions.map((question) => ({ questionId: question.id, answerId: null, order: question.order })),
         currentQuestion: 1,
         numberOfQuestions: questions.length ?? 0,
-        startDate,
+        startDate: startDate.toISOString(),
         isDone: false,
         endDate: null,
-        expireIn: new Date(new Date(startDate).setSeconds(new Date(startDate).getSeconds() + state.expireTime))
+        expireIn: new Date(new Date(startDate).setSeconds(new Date(startDate).getSeconds() + state.timeout)).toISOString()
       }
       localStorage.setItem("survey", JSON.stringify(survey))
       return {
@@ -63,11 +63,16 @@ export const reducer: TNavReducer = (state, action) => {
         return { ...state, survey }
       } else if (questions.length === findQuestion?.order) {
         // last question
-        const newState: TNavReducerState = { ...state, page: "completed", survey: { ...state.survey!, endDate: new Date(), isDone: true } }
+        const newState: TNavReducerState = { ...state, page: "completed", survey: { ...state.survey!, endDate: new Date().toISOString(), isDone: true } }
         localStorage.setItem("survey", JSON.stringify(newState.survey))
         return newState
       }
       return state
+    }
+    case "FORCE_FINISHED": {
+      const survey: TNavReducerState["survey"] = { ...state.survey!, isDone: true, endDate: new Date().toISOString() }
+      localStorage.setItem("survey", JSON.stringify(survey))
+      return { ...state, survey, page: "completed" }
     }
     default:
       return state;
@@ -77,5 +82,5 @@ export const reducer: TNavReducer = (state, action) => {
 export const initialState: TNavReducerState = {
   page: "start",
   survey: null,
-  expireTime: 5 * 60 // in second
+  timeout: 1.5 * 60 // in second
 };

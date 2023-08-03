@@ -30,6 +30,8 @@ export const SurveyFormStyled = styled(motion.div)`
       height: 100%;
       .header {
         display: flex;
+        justify-content: space-between;
+        align-items: center;
         .title {
           text-align: center;
           font-size: 30px;
@@ -100,4 +102,34 @@ export const BarLevel = styled.div<TBarLevel>`
     background-color: #125cd3;
   `}
   transition: 0.3s background-color ease-in-out;
+`
+
+type TCustomCountdown = {
+  $isRunningOut: boolean
+}
+
+export const CustomCountdown = styled.div<TCustomCountdown>`
+  display: flex;
+  .completed{
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+    color: #295499;
+    @media screen and (min-width: 630px){
+      font-size: 16px;
+    }
+  }
+  .running{
+    font-size: 14px;
+    font-weight: 700;
+    margin: 0;
+    color: #295499;
+    ${({ $isRunningOut }) => $isRunningOut && css`
+      color: #ff3838;
+    `}
+    @media screen and (min-width: 630px){
+      font-size: 16px;
+    }
+  }
+  transition: color 0.3s ease-in-out;
 `

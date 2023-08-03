@@ -1,16 +1,21 @@
 import React from "react"
 import Button from "../BasicInput/Button"
-import { BarLevel, SurveyFormStyled } from "./SurveyForm.styled"
+import { BarLevel, CustomCountdown, SurveyFormStyled } from "./SurveyForm.styled"
 import { SurveyContext } from "../../Contexts"
 import { TSurveyContext } from "../../Contexts/SurveyProvider.types"
 import { AnimatePresence } from "framer-motion"
 import RadioGroup from "../BasicInput/RadioGroup"
 import Radio from "../BasicInput/Radio"
 import { motion } from "framer-motion"
+import Countdown from "../Countdown/Countdown"
+import { CountdownRendererProps } from "../Countdown/Countdown.types"
+import { zeroPad } from "../Countdown/Countdown.heplers"
 
 const SurveyForm = () => {
   const { survey, questions, dispatch } = React.useContext(SurveyContext) as TSurveyContext
   const [mounted, setMounted] = React.useState(false)
+
+  const expireDate = React.useMemo(() => new Date(survey?.expireIn!), [survey?.expireIn])
 
   React.useEffect(() => {
     setMounted(true)
@@ -34,7 +39,10 @@ const SurveyForm = () => {
       </div>
       <div className="modal">
         <div className="content">
-          <div className="header"><p className="title">{`Q${survey?.currentQuestion}`}</p></div>
+          <div className="header">
+            <p className="title">{`Q${survey?.currentQuestion}`}</p>
+            <Countdown date={expireDate} renderer={RenderCountdown} />
+          </div>
           <div className="form">
             <AnimatePresence mode="popLayout">
               {questions.map((question) => question.order === survey?.currentQuestion && (
@@ -61,3 +69,12 @@ const SurveyForm = () => {
 }
 
 export default SurveyForm
+
+const RenderCountdown = (props: CountdownRendererProps) => {
+  return (
+    <CustomCountdown $isRunningOut={!props.completed && props.seconds !== 0 && props.seconds < 10}>
+      {props.completed && <div className="completed">{"Time's up!"}</div>}
+      {!props.completed && <div className="running">{`${zeroPad(props.minutes, 2)}: ${zeroPad(props.seconds, 2)}`}</div>}
+    </CustomCountdown>
+  )
+}

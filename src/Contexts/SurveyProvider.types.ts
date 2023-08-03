@@ -3,11 +3,11 @@ import { questions } from "../utils/dummyQuestion";
 
 export type TNavReducerState = {
   page: "start" | "survey" | "completed" | "review"
-  expireTime: number
+  timeout: number
   survey: {
-    startDate: Date
-    endDate: Date | null
-    expireIn: Date
+    startDate: string
+    endDate: string | null
+    expireIn: string
     numberOfQuestions: number
     currentQuestion: number
     isDone: boolean;
@@ -31,6 +31,9 @@ export type TNavReducerAction =
   } |
   {
     type: "NEXT_QUESTION"
+  } |
+  {
+    type: "FORCE_FINISHED"
   }
 
 export type TNavReducer = (state: TNavReducerState, action: TNavReducerAction) => TNavReducerState

@@ -1,6 +1,6 @@
 import React from "react"
 import InitialForm from "../InitialForm"
-import { ContainerStyled } from "./Container.styled"
+import { ContainerStyled, Owner } from "./Container.styled"
 import { SurveyContext } from "../../Contexts"
 import { TSurveyContext } from "../../Contexts/SurveyProvider.types"
 import SurveyForm from "../SurveyForm"
@@ -26,6 +26,7 @@ const Container = () => {
         {page === "completed" && <SurveyCompleted />}
         {page === "review" && <Review />}
       </motion.div>
+      <Owner>Muhammad Luqmanul Hakim.</Owner>
     </ContainerStyled>
   )
 }
