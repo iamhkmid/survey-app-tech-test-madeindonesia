@@ -9,4 +9,6 @@ export const ContainerStyled = styled.div`
   width: 100vw;
   overflow: hidden;
   height: 100vh;
+  box-sizing: border-box;
+  padding: 10px;
 `

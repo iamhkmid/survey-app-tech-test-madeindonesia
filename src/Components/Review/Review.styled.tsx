@@ -6,28 +6,53 @@ export const ReviewStyled = styled(motion.div)`
   flex-direction: column;
   justify-content: center;
   height: 500px;
-  width: 500px;
+  width: 100%;
   border-radius: 15px;
-  padding: 40px;
+  padding: 30px;
   box-sizing: border-box;
   background-color: #fff;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+  @media screen and (min-width: 630px){
+    padding: 40px;
+    width: 500px;
+  }
   > div.content {
     display: flex;
-    align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 20px;
-    .title {
-      text-align: center;
-      font-size: 20px;
-      font-weight: 800;
-      margin: 0;
-      color: #295499;
+    justify-content: space-between;
+    .header {
+      display: flex;
+      justify-content: center;
+      .title {
+        text-align: center;
+        font-size: 18px;
+        font-weight: 800;
+        margin: 0;
+        color: #295499;
+        @media screen and (min-width: 630px){
+          font-size: 20px;
+        }
+      }
+    }
+    .survey-date {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      margin-top: 20px;
+      > p {
+        font-size: 11px;
+        font-weight: 700;
+        margin: 0;
+        color: #295499;
+        span {
+          font-weight: 500;
+        }
+      }
     }
     .answers-wrapper {
       margin-top: 20px;
-      max-height: 300px;
+      max-height: 250px;
       overflow-y: auto;
       &::-webkit-scrollbar {
         width: 10px;
@@ -62,10 +87,13 @@ export const ReviewStyled = styled(motion.div)`
           flex-direction: column;
           gap: 5px;
           >p:nth-child(1) {
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 500;
             margin: 0;
             color: #295499;
+            @media screen and (min-width: 630px){
+              font-size: 13px;
+            }
           }
           .answer {
             display: flex;
@@ -79,10 +107,13 @@ export const ReviewStyled = styled(motion.div)`
               }
             }
             p {
-              font-size: 13px;
+              font-size: 12px;
               font-weight: 800;
               margin: 0;
               color: #295499;
+              @media screen and (min-width: 630px){
+                font-size: 13px;
+              }
             }
           }
           .not-answered {
@@ -98,10 +129,13 @@ export const ReviewStyled = styled(motion.div)`
               }
             }
             p {
-              font-size: 13px;
+              font-size: 12px;
               font-weight: 800;
               margin: 0;
               color: #fd3e3e;
+              @media screen and (min-width: 630px){
+                font-size: 13px;
+              }
             }
           }
         }
@@ -110,6 +144,7 @@ export const ReviewStyled = styled(motion.div)`
     >div.button-wrapper {
       display: flex;
       gap: 20px;
+      margin-top: 20px;
     }
   }
 `

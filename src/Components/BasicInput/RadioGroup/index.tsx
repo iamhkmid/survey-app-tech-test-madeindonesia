@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
 import { RadioGroupProps } from "./RadioGroup.types";
 import { RadioGroupStyled } from "./RadioGroup.styled";

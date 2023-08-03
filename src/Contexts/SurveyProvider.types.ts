@@ -2,11 +2,14 @@ import React from "react"
 import { questions } from "../utils/dummyQuestion";
 
 export type TNavReducerState = {
-  page: "start" | "survey" | "completed" | "review",
+  page: "start" | "survey" | "completed" | "review"
+  expireTime: number
   survey: {
-    startDate: Date;
-    numberOfQuestions: number;
-    currentQuestion: number;
+    startDate: Date
+    endDate: Date | null
+    expireIn: Date
+    numberOfQuestions: number
+    currentQuestion: number
     isDone: boolean;
     answers: { questionId: string; answerId: string | null; order: number; }[]
   } | null

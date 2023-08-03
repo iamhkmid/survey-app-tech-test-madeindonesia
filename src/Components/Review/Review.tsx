@@ -6,6 +6,7 @@ import { TSurveyContext } from "../../Contexts/SurveyProvider.types"
 import { motion } from "framer-motion"
 import { ReactComponent as XIcon } from "./assets/close-outline.svg"
 import { ReactComponent as EllipseIcon } from "./assets/ellipse.svg"
+import moment from "moment"
 
 const Review = () => {
   const { survey, questions, dispatch } = React.useContext(SurveyContext) as TSurveyContext
@@ -19,7 +20,13 @@ const Review = () => {
   return (
     <ReviewStyled layoutId="page-state">
       <div className="content">
-        <p className="title">Review your previous survey</p>
+        <div className="header">
+          <p className="title">Review your previous survey</p>
+        </div>
+        <div className="survey-date">
+          <p>Start Date : <span>{moment(survey?.startDate!).format("DD MMMM YYYY | HH:ss")}</span></p>
+          <p>End Date : <span>{moment(survey?.endDate!).format("DD MMMM YYYY | HH:ss")}</span></p>
+        </div>
         <div className="answers-wrapper">
           <div className="scroll">
             {survey?.answers.map((answer, idx) => {

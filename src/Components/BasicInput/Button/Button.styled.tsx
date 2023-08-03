@@ -2,12 +2,16 @@ import { styled } from "styled-components"
 
 export const ButtonStyled = styled.button`
   cursor: pointer;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 600;
   padding: 10px 25px;
   border-radius: 20px;
   border: 0;
   outline: none;
+  @media screen and (min-width: 630px){
+    font-size: 14px;
+    font-weight: 600;
+  }
   &.primary {
     background-color: #3b6bb9;
     color: #fff;
