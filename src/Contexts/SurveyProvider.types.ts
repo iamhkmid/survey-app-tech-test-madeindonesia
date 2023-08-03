@@ -1,4 +1,5 @@
 import React from "react"
+import { questions } from "../utils/dummyQuestion";
 
 export type TNavReducerState = {
   page: "start" | "survey" | "completed" | "review",
@@ -36,5 +37,6 @@ export interface TSurveyProvider {
 }
 
 export interface TSurveyContext extends TNavReducerState {
+  questions: typeof questions
   dispatch: React.Dispatch<TNavReducerAction>
 }

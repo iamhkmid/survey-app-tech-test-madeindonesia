@@ -4,13 +4,12 @@ import { BarLevel, SurveyFormStyled } from "./SurveyForm.styled"
 import { SurveyContext } from "../../Contexts"
 import { TSurveyContext } from "../../Contexts/SurveyProvider.types"
 import { AnimatePresence } from "framer-motion"
-import { questions } from "../../utils/dummyQuestion"
 import RadioGroup from "../BasicInput/RadioGroup"
 import Radio from "../BasicInput/Radio"
 import { motion } from "framer-motion"
 
 const SurveyForm = () => {
-  const { survey, dispatch } = React.useContext(SurveyContext) as TSurveyContext
+  const { survey, questions, dispatch } = React.useContext(SurveyContext) as TSurveyContext
   const [mounted, setMounted] = React.useState(false)
 
   React.useEffect(() => {

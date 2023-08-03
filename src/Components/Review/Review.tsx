@@ -4,12 +4,11 @@ import { ReviewStyled } from "./Review.styled"
 import { SurveyContext } from "../../Contexts"
 import { TSurveyContext } from "../../Contexts/SurveyProvider.types"
 import { motion } from "framer-motion"
-import { questions } from "../../utils/dummyQuestion"
 import { ReactComponent as XIcon } from "./assets/close-outline.svg"
 import { ReactComponent as EllipseIcon } from "./assets/ellipse.svg"
 
 const Review = () => {
-  const { survey, dispatch } = React.useContext(SurveyContext) as TSurveyContext
+  const { survey, questions, dispatch } = React.useContext(SurveyContext) as TSurveyContext
 
   const findQuestion = React.useCallback((questionId: string, answerId: string) => {
     const question = questions.find((item) => item.id === questionId)
@@ -26,11 +25,11 @@ const Review = () => {
             {survey?.answers.map((answer, idx) => {
               const item = findQuestion(answer.questionId, answer.answerId!)
               return (
-                <div className="item-wrapper">
+                <div className="item-wrapper" key={answer.questionId}>
                   <div className="question-number">{idx + 1}</div>
                   <div className="question">
                     <p>{item.question}</p>
-                    {!!item.answer && <div className="answer"><EllipseIcon/><p>{item.answer}</p></div>}
+                    {!!item.answer && <div className="answer"><EllipseIcon /><p>{item.answer}</p></div>}
                     {!item.answer && <div className="not-answered"><XIcon /> <p>Not answered</p></div>}
                   </div>
                 </div>
