@@ -1,5 +1,3 @@
-# survey-app-tech-test-madeindonesia
-
 # FRONT-END (REACT) TECHNICAL TEST MadeIndonesia by Muhammad Luqmanul Hakim
 
 This project was build with React JS
