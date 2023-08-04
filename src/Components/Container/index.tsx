@@ -13,25 +13,27 @@ const Container = () => {
 
   return (
     <ContainerStyled>
-      <motion.div
-        initial={{ y: 800, scale: 0.3 }}
-        animate={{ y: 0, scale: 1 }}
-        transition={{
-          type: 'spring',
-          stiffness: 500,
-          damping: 40
-        }}>
-        {page === "start" && <InitialForm />}
-        {page === "survey" && <SurveyForm />}
-        {page === "completed" && <SurveyCompleted />}
-        {page === "review" && <Review />}
-      </motion.div>
-      <Mark>
-        <div>
-          <p>FRONT-END (REACT) TECHNICAL TEST</p>
-          <p>by Muhammad Luqmanul Hakim.</p>
-        </div>
-      </Mark>
+      <div>
+        <motion.div
+          initial={{ y: 800, scale: 0.3 }}
+          animate={{ y: 0, scale: 1 }}
+          transition={{
+            type: 'spring',
+            stiffness: 500,
+            damping: 40
+          }}>
+          {page === "start" && <InitialForm />}
+          {page === "survey" && <SurveyForm />}
+          {page === "completed" && <SurveyCompleted />}
+          {page === "review" && <Review />}
+        </motion.div>
+        <Mark>
+          <div>
+            <p>FRONT-END (REACT) TECHNICAL TEST</p>
+            <p>by Muhammad Luqmanul Hakim.</p>
+          </div>
+        </Mark>
+      </div>
     </ContainerStyled>
   )
 }

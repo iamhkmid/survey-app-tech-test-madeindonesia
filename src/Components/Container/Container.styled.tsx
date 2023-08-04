@@ -6,11 +6,10 @@ export const ContainerStyled = styled.div`
   align-items: center;
   justify-content: center;
   background: linear-gradient(328deg, rgba(113,190,255,1) 0%, rgba(255,150,150,1) 100%);
-  width: 100vw;
-  overflow: hidden;
-  height: 100vh;
+  min-width: 100vw;
+  min-height: 100vh;
   box-sizing: border-box;
-  padding: 10px;
+  padding: 30px 10px;
 `
 
 export const Mark = styled.div`

@@ -12,7 +12,7 @@ export const SurveyFormStyled = styled(motion.div)`
   > div.modal {
     display: flex;
     flex-direction: column;
-    height: 500px;
+    height: 400px;
     width: 100%;
     border-radius: 15px;
     padding: 30px;
@@ -22,6 +22,9 @@ export const SurveyFormStyled = styled(motion.div)`
     @media screen and (min-width: 630px){
       padding: 40px;
       width: 550px;
+    }
+    @media screen and (min-height: 550px){
+      height: 500px;
     }
     > div.content {
       display: flex;
